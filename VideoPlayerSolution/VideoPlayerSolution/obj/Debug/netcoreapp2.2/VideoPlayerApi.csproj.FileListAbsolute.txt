@@ -1,0 +1,14 @@
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\bin\Debug\netcoreapp2.2\VideoPlayerApi.deps.json
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\bin\Debug\netcoreapp2.2\VideoPlayerApi.runtimeconfig.json
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\bin\Debug\netcoreapp2.2\VideoPlayerApi.runtimeconfig.dev.json
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\bin\Debug\netcoreapp2.2\VideoPlayerApi.dll
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\bin\Debug\netcoreapp2.2\VideoPlayerApi.pdb
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.csprojResolveAssemblyReference.cache
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.csproj.CoreCompileInputs.cache
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.RazorAssemblyInfo.cache
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.RazorAssemblyInfo.cs
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.AssemblyInfoInputs.cache
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.AssemblyInfo.cs
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.RazorTargetAssemblyInfo.cache
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.dll
+F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\obj\Debug\netcoreapp2.2\VideoPlayerApi.pdb
