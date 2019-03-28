@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using VideoPlayerApi.Models;
-using System.IO;
-using VideoPlayerApi.Helper;
-using VideoPlayerApi.Repository.MoviesRepository;
-
+using VideoPlayer.Handlers.Interface;
+using VideoPlayer.Handlers.Messages;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace VideoPlayerApi.Controllers
@@ -16,24 +10,27 @@ namespace VideoPlayerApi.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private IMoviesRepository moviesRepository;
+        private readonly IRequestHandlerFactory _requestHandlerFactory;
+        private MoviesResponse moviesResponse = new MoviesResponse();
 
-        public MoviesController()
+        public MoviesController(IRequestHandlerFactory requestHandlerFactory)
         {
-            moviesRepository = new MoviesRepository();
+            _requestHandlerFactory = requestHandlerFactory;
         }
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Movies> GetAllMovies()
+        public MoviesResponse GetAllMovies()
         {
-           return moviesRepository.GetMovies();
+            return _requestHandlerFactory.ProcessRequest<MoviesRequest, MoviesResponse>(new MoviesRequest());
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Movies Get(int id)
+        public MoviesResponse Get(int id)
         {
-            return moviesRepository.GetMovieById(id);
+            //return moviesRepository.GetMovieById(id);
+            var moviesRequest = new MoviesRequest();
+            return _requestHandlerFactory.ProcessRequest<MoviesRequest, MoviesResponse>(moviesRequest);
         }
 
         // POST api/values

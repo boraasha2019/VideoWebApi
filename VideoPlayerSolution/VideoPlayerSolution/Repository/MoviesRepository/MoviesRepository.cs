@@ -11,7 +11,7 @@ namespace VideoPlayerApi.Repository.MoviesRepository
     public class MoviesRepository : IMoviesRepository
     {
 
-        private List<Movies> listMovies = new List<Movies>();
+        private List<Movies> listMovies = null;
 
         public MoviesRepository()
         {

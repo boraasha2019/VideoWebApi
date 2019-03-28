@@ -11,6 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
+using VideoPlayer.Handlers.Interface;
+using VideoPlayer.Handlers.Request;
+using VideoPlayer.Handlers.Messages;
+using VideoPlayer.Handler.Request;
 
 namespace VideoPlayerSolution
 {
@@ -27,7 +31,12 @@ namespace VideoPlayerSolution
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-              //  .AddJsonOptions(option=>option.SerializerSettings.ContractResolver=new DefaultContractResolver());
+            //.AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            services.AddScoped<IRequestHandler<MoviesRequest, MoviesResponse>, MoviesRequestHandler>();
+
+            services.AddScoped<IRequestHandlerFactory, RequestHandlerFactory>();
+
+            //  .AddJsonOptions(option=>option.SerializerSettings.ContractResolver=new DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

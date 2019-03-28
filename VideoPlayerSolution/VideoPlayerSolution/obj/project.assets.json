@@ -4438,6 +4438,54 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "VideoPlayer.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/VideoPlayer.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VideoPlayer.Common.dll": {}
+        }
+      },
+      "VideoPlayer.Handlers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "VideoPlayer.Models": "1.0.0",
+          "VideoPlayer.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/VideoPlayer.Handlers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VideoPlayer.Handlers.dll": {}
+        }
+      },
+      "VideoPlayer.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/VideoPlayer.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VideoPlayer.Models.dll": {}
+        }
+      },
+      "VideoPlayer.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "VideoPlayer.Common": "1.0.0",
+          "VideoPlayer.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/VideoPlayer.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VideoPlayer.Repository.dll": {}
+        }
       }
     }
   },
@@ -12077,13 +12125,34 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "VideoPlayer.Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/VideoPlayer.Common.csproj",
+      "msbuildProject": "../Common/VideoPlayer.Common.csproj"
+    },
+    "VideoPlayer.Handlers/1.0.0": {
+      "type": "project",
+      "path": "../VideoPlayerHandler/VideoPlayer.Handlers.csproj",
+      "msbuildProject": "../VideoPlayerHandler/VideoPlayer.Handlers.csproj"
+    },
+    "VideoPlayer.Models/1.0.0": {
+      "type": "project",
+      "path": "../VideoPlayerModels/VideoPlayer.Models.csproj",
+      "msbuildProject": "../VideoPlayerModels/VideoPlayer.Models.csproj"
+    },
+    "VideoPlayer.Repository/1.0.0": {
+      "type": "project",
+      "path": "../VideoPlayerRepository/VideoPlayer.Repository.csproj",
+      "msbuildProject": "../VideoPlayerRepository/VideoPlayer.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "VideoPlayer.Handlers >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12096,9 +12165,9 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "F:\\Study\\VideoPlayer\\VideoPlayerSolution\\VideoPlayerSolution\\VideoPlayerApi.csproj",
-      "projectName": "VideoPlayerApi",
-      "projectPath": "F:\\Study\\VideoPlayer\\VideoPlayerSolution\\VideoPlayerSolution\\VideoPlayerApi.csproj",
+      "projectUniqueName": "F:\\Study\\VideoPlayer\\VideoPlayerSolution\\VideoPlayerSolution\\VideoPlayer.Api.csproj",
+      "projectName": "VideoPlayer.Api",
+      "projectPath": "F:\\Study\\VideoPlayer\\VideoPlayerSolution\\VideoPlayerSolution\\VideoPlayer.Api.csproj",
       "packagesPath": "C:\\Users\\ASHA BORA\\.nuget\\packages\\",
       "outputPath": "F:\\Study\\VideoPlayer\\VideoPlayerSolution\\VideoPlayerSolution\\obj\\",
       "projectStyle": "PackageReference",
@@ -12118,7 +12187,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "F:\\Study\\VideoPlayer\\VideoPlayerSolution\\VideoPlayerHandler\\VideoPlayer.Handlers.csproj": {
+              "projectPath": "F:\\Study\\VideoPlayer\\VideoPlayerSolution\\VideoPlayerHandler\\VideoPlayer.Handlers.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
