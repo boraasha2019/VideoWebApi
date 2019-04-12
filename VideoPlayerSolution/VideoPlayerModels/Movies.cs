@@ -18,9 +18,9 @@ namespace VideoPlayer.Models
         public string MovieName { get; set; }
 
         /// <summary>
-        /// to identify the languae of the movie
+        /// to identify the path of the movie
         /// </summary>
-        public string MovieLanguage { get; set; }
+        public string MoviePath { get; set; }
 
 
     }
