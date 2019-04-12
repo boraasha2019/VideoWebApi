@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Serialization;
 using VideoPlayer.Handlers.Interface;
 using VideoPlayer.Handlers.Request;
 using VideoPlayer.Handlers.Messages;
-using VideoPlayer.Handler.Request;
 
 namespace VideoPlayerSolution
 {
@@ -33,7 +24,18 @@ namespace VideoPlayerSolution
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //.AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
             services.AddScoped<IRequestHandler<MoviesRequest, MoviesResponse>, MoviesRequestHandler>();
+            services.AddScoped<IRequestHandler<MovieRequest, MovieResponse>, MovieRequestHandler>();
+            // services.AddScoped < IRequestHandler<TReq, TResp>, typeof(RequestHandler) > ();
 
+            // to call an api  from javascript, we need to enable CORS on the api server.
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+            builder => builder.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader()
+                              .AllowCredentials());
+            });
             services.AddScoped<IRequestHandlerFactory, RequestHandlerFactory>();
 
             //  .AddJsonOptions(option=>option.SerializerSettings.ContractResolver=new DefaultContractResolver());
@@ -53,6 +55,7 @@ namespace VideoPlayerSolution
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseMvc();
         }
     }

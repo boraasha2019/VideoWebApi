@@ -11,7 +11,6 @@ namespace VideoPlayerApi.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IRequestHandlerFactory _requestHandlerFactory;
-        private MoviesResponse moviesResponse = new MoviesResponse();
 
         public MoviesController(IRequestHandlerFactory requestHandlerFactory)
         {
@@ -19,18 +18,19 @@ namespace VideoPlayerApi.Controllers
         }
         // GET: api/values
         [HttpGet]
-        public MoviesResponse GetAllMovies()
+        public ActionResult GetMovies()
         {
-            return _requestHandlerFactory.ProcessRequest<MoviesRequest, MoviesResponse>(new MoviesRequest());
+            return Ok(_requestHandlerFactory.ProcessRequest<MoviesRequest, MoviesResponse>(new MoviesRequest()));
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public MoviesResponse Get(int id)
-        {
-            //return moviesRepository.GetMovieById(id);
-            var moviesRequest = new MoviesRequest();
-            return _requestHandlerFactory.ProcessRequest<MoviesRequest, MoviesResponse>(moviesRequest);
+        [HttpGet("{movieName}")]
+        public ActionResult Get(string movieName)
+        { 
+            MovieRequest request = new MovieRequest();
+            request.MovieName = movieName;
+            //return Ok(_requestHandlerFactory.ProcessRequest < MovieRequest, MovieResponse)(new MovieRequest());
+            return Ok();
         }
 
         // POST api/values
@@ -50,5 +50,7 @@ namespace VideoPlayerApi.Controllers
         public void Delete(int id)
         {
         }
+
+
     }
 }
