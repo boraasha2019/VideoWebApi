@@ -2,12 +2,11 @@
 using VideoPlayer.Handlers.Messages;
 using VideoPlayer.Repository;
 
-
-namespace VideoPlayer.Handler.Request
+namespace VideoPlayer.Handlers.Request
 {
    public class MoviesRequestHandler : IRequestHandler<MoviesRequest, MoviesResponse>
     {
-        public MoviesResponse CreateRequest(MoviesRequest req)
+        public MoviesResponse ProcessRequest(MoviesRequest req)
         {
             var response = new MoviesResponse();
             response.MoviesList = new MoviesRepository().GetMovies();

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VideoPlayer.Handlers.Interface
+﻿namespace VideoPlayer.Handlers.Interface
 {
-   public interface IRequestHandler<TReq, TResp>
+    public interface IRequestHandler<TReq, TResp>
     {
-        TResp CreateRequest(TReq req);
+        TResp ProcessRequest(TReq req);
     }
 }

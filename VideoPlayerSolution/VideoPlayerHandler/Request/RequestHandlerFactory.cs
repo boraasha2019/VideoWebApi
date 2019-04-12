@@ -18,7 +18,7 @@ namespace VideoPlayer.Handlers.Request
 
             if (handler == null)
                 throw new NotImplementedException("No Handler Registered for type: " + typeof(TRequest).FullName);
-            return handler.CreateRequest(request);
+            return handler.ProcessRequest(request);
         }
     }
 }

@@ -5,6 +5,6 @@ namespace VideoPlayer.Handlers.Messages
 {
    public class MoviesResponse
     {
-        internal IEnumerable<Movies> MoviesList { get; set; }
+        public List<Movies> MoviesList { get; set; }
     }
 }
