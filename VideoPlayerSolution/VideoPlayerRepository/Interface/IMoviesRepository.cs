@@ -8,6 +8,6 @@ namespace VideoPlayer.Repository.Interface
     interface IMoviesRepository
     {
         IEnumerable<Movies> GetMovies();
-        Movies GetMovieById(int movieId);
+        Movies GetMovie(string movieName);
     }
 }

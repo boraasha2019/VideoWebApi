@@ -19,18 +19,18 @@ namespace VideoPlayer.Repository
         /// <summary>
         /// To fetch the movie with a movie Id
         /// </summary>
-        /// <param name="movieId"></param>
+        /// <param name="movieName"></param>
         /// <returns></returns>
-        public Movies GetMovieById(int movieId)
+        public Movies GetMovie(string movieName)
         {
-            return GetAllMovies().FirstOrDefault(movie => movie.MovieId == movieId);
+            return GetAllMovies().FirstOrDefault(movie => movie.MovieName.Contains(movieName));
         }
 
         /// <summary>
         /// To fetch all the movies
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Movies> GetMovies()
+        public List<Movies> GetMovies()
         {
             return GetAllMovies();
         }
@@ -45,7 +45,7 @@ namespace VideoPlayer.Repository
                 foreach (var movies in Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories))
                 {
                     if (Utility.IsValidMovieExtension(Path.GetExtension(movies)))
-                        movList.Add(new Movies { MovieId = ++id, MovieName = Path.GetFileName(movies), MovieLanguage = Path.GetFileName(folderPath) });
+                        movList.Add(new Movies { MovieId = ++id, MovieName = Path.GetFileName(movies), MoviePath = Path.GetFullPath(folderPath) });
                 }
             }
             return movList;
