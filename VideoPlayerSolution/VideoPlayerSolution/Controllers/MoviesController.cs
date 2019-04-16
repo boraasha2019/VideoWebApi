@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VideoPlayer.Handlers.Interface;
 using VideoPlayer.Handlers.Messages;
+using VideoPlayer.Repository;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace VideoPlayerApi.Controllers
@@ -24,13 +25,14 @@ namespace VideoPlayerApi.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{movieName}")]
-        public ActionResult Get(string movieName)
-        { 
-            MovieRequest request = new MovieRequest();
-            request.MovieName = movieName;
+        [HttpGet("{name}")]
+        public ActionResult Get(string name)
+        {
+            //  MovieRequest request = new MovieRequest();
+            MoviesRepository moviesRepository = new MoviesRepository();
+          //  request.MovieName = movieName;
             //return Ok(_requestHandlerFactory.ProcessRequest < MovieRequest, MovieResponse)(new MovieRequest());
-            return Ok();
+            return Ok(moviesRepository.GetMovie(name));
         }
 
         // POST api/values
