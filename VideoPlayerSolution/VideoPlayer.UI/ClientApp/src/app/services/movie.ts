@@ -1,5 +1,6 @@
 export class Movie {
-  MovieId: string;
-  MovieName: string;
-  MoviePath: string;
+  Id: string;
+  Name: string;
+  Path: string;
+  Format: string;
 }

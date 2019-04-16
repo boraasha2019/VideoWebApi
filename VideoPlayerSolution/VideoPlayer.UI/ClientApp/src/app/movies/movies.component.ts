@@ -9,11 +9,11 @@ import { Movie } from '../services/movie';
   templateUrl: './movies.component.html'
 })
 
-export class MovieComponent implements OnInit {
+export class MoviesComponent implements OnInit {
   //  moviesList: Observable<Movies[]>;
   private moviesList: any = [];
   private title: string = "Movies...";
-  private movieN: string;
+  private selectedMovie: Movie = null;
   constructor(private movieservice: MoviesService) {
   }
   ngOnInit(): void {
@@ -28,9 +28,16 @@ export class MovieComponent implements OnInit {
     });
   }
 
-  getMovie(movieName: string)
-  {
-   // this.movieservice.getMovie(movieName).subscribe(res= )
+  getMovie(movie: string) {
+    console.log(movie["name"]);
+    debugger;
+    this.movieservice.getMovie(movie["name"]).subscribe(resp => {
+      console.log(this.selectedMovie + ">>>");
+      debugger;
+      this.selectedMovie = resp;
+
+      console.log("move  " + resp.Format);
+    });
   }
 
 }

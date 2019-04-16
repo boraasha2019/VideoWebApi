@@ -4,14 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MovieComponent } from './movies/movies.component';
+import { MoviesComponent } from './movies/movies.component';
 
 import { MoviesService } from './services/movies.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieComponent
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +19,6 @@ import { MoviesService } from './services/movies.service';
     HttpClientModule
   ],
   providers: [MoviesService],
-  bootstrap: [AppComponent, MovieComponent]
+  bootstrap: [AppComponent, MoviesComponent]
 })
 export class AppModule { }

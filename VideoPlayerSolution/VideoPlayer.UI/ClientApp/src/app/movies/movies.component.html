@@ -1,6 +1,15 @@
 
 <div class="container">
-  <h3>{{title}}</h3>
+  <h1>{{title}}</h1>
+
+  <!--<div *ngif="selectedMovie" >
+    <h2>Movie: <mark> {{selectedMovie.name}}</mark> </h2>
+    <video id="videoPlayer" width="320" height="240" controls>
+      <source src="{{selectedMovie.path}}" type="video/{{selectedMovie.Format}}" />
+    </video>
+  </div>-->
+
+
   <table class="table table-bordered table-striped table-hover" *ngIf="moviesList">
     <thead class="thead-dark">
       <tr>
@@ -12,13 +21,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let movie of moviesList">
-        <td>{{movie.movieId}}</td>
-        <td>{{movie.movieName}}</td>
-        <td>{{movie.moviePath}}</td>
-        <td><button type="button" class="btn" routerLink="">Play</button></td>
+        <td>{{movie.id}}</td>
+        <td>{{movie.name}}</td>
+        <td>{{movie.path}}</td>
+        <td><button type="button" class="btn" (click)="getMovie(movie)">Play</button></td>
       </tr>
     </tbody>
   </table>
+
+
+
+
 </div>
 
 
