@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from "rxjs";
 import { MoviesService } from '../services/movies.service';
 import { Movie } from '../services/movie';
+
 
 
 @Component({
@@ -10,12 +13,15 @@ import { Movie } from '../services/movie';
 })
 
 export class MoviesComponent implements OnInit {
-  //  moviesList: Observable<Movies[]>;
   private moviesList: any = [];
-  private title: string = "Movies...";
-  private selectedMovie: Movie = null;
+  private title: string = "Enjoy Movies...";
+  private selectedMovie: Movie = new Movie();
+  private moviePath: any;
+  private imgPath: any;
   constructor(private movieservice: MoviesService) {
   }
+
+
   ngOnInit(): void {
     this.getMovies();
 
@@ -29,14 +35,15 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovie(movie: string) {
-    console.log(movie["name"]);
     debugger;
     this.movieservice.getMovie(movie["name"]).subscribe(resp => {
-      console.log(this.selectedMovie + ">>>");
       debugger;
-      this.selectedMovie = resp;
-
-      console.log("move  " + resp.Format);
+      this.selectedMovie.Id = resp["id"];
+      this.selectedMovie.Name = resp["name"];
+      this.selectedMovie.MoviePath = resp["moviePath"]  + resp["name"];//+ "" + resp["language"] + 
+      this.selectedMovie.Format = resp["format"];
+      this.selectedMovie.Language = resp["Language"];
+      console.log("as  " + this.selectedMovie.MoviePath);
     });
   }
 

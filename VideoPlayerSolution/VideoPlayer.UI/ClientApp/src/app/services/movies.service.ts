@@ -4,7 +4,9 @@ import { map } from 'rxjs/operators';
 import { Observable } from "rxjs";
 
 import { Movie } from './movie';
-//import 'rxjs/Operator';
+import * as global from '../shared/global';
+////import 'rxjs/Operator';
+
 
 
 
@@ -12,7 +14,8 @@ import { Movie } from './movie';
 @Injectable({ providedIn: 'root' })
 
 export class MoviesService {
-  apiUrl: string = "http://localhost:2133/api";
+  debugger;
+  apiUrl = global.BASE_WEBAPI_URL; 
 
   constructor(private _http: HttpClient) { }
 
@@ -22,7 +25,8 @@ export class MoviesService {
 
   getMovie(name: string): Observable<Movie> {
     let params = new HttpParams().set("name", name);
-    debugger;
+   // debugger;
+   // console.log("SERVICE - " + this._http+"  " + this.apiUrl + "/movies/" + name);
     return this._http.get<Movie>(this.apiUrl + "/movies/" + name);
   //  return this._http.get<Movie>(this.apiUrl + "/movies/", { params: params });
     // // return this._http.get<Movie[]>(this.apiUrl + "/movies").find(movie => movie.movieName === name);
