@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Hosting;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace VideoPlayer.Repository
         /// <returns></returns>
         public Movies GetMovie(string movieName)
         {
-            return GetAllMovies().FirstOrDefault(movie => movie.MovieName.Contains(movieName));
+            return GetAllMovies().Find(movie => movie.Name.Contains(movieName));
         }
 
         /// <summary>
@@ -37,18 +38,31 @@ namespace VideoPlayer.Repository
 
         private List<Movies> GetAllMovies()
         {
-            var folderPath = @"G:\Movies\English";
+           // var folderPath = @"G:\Movies\English";
+              var folderPath = @"F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\wwwroot\";
             var id = 0;
+            var sb = string.Empty;
+            var indx = 0;
             List<Movies> movList = new List<Movies>();
             if (Directory.Exists(folderPath))
             {
-                foreach (var movies in Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories))
+                //foreach (var direct in Directory.GetDirectories(folderPath, "*.*", SearchOption.AllDirectories))
+                //{
+                //foreach (var movies in Directory.GetFiles(direct, "*.*", SearchOption.AllDirectories))
+                //{
+                foreach (var direct in Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories))
                 {
-                    if (Utility.IsValidMovieExtension(Path.GetExtension(movies)))
-                        movList.Add(new Movies { MovieId = ++id, MovieName = Path.GetFileName(movies), MoviePath = Path.GetFullPath(folderPath) });
+                    if (Utility.IsValidMovieExtension(Path.GetExtension(direct)))
+                    {
+                        indx = direct.LastIndexOf("\\");
+                        sb = direct.Substring(indx, (direct.Length - indx)).Remove(0, 1);
+                        movList.Add(new Movies { Id = ++id, Name = Path.GetFileName(direct), Format = Path.GetExtension(direct).Substring(1), Language = sb });
+                    }
                 }
+                //    }
+                //}
             }
-            return movList;
+            return movList.OrderBy(m => m.Name).ToList();
         }
     }
 }
