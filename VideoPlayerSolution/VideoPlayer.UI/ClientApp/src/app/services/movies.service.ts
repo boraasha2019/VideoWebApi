@@ -14,7 +14,7 @@ import * as global from '../shared/global';
 @Injectable({ providedIn: 'root' })
 
 export class MoviesService {
-  debugger;
+  //debugger;
   apiUrl = global.BASE_WEBAPI_URL; 
 
   constructor(private _http: HttpClient) { }

@@ -3,5 +3,5 @@ export class Movie {
   Name: string;
   MoviePath: string;
   Format: string;
-  Language: string;
+  MovieDirectory: string;
 }

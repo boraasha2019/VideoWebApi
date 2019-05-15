@@ -2,12 +2,9 @@
 <div class="container">
 
   <div *ngIf="selectedMovie.Name">
-   
+
     <h3>Enjoy : <mark> {{selectedMovie.Name}}</mark>  !!</h3>
-    <video id="videoPlayer" [src]="selectedMovie.MoviePath" width="560" height="240" controls>
-      <!-- <source [src]="(selectedMovie.Path+ '\\'+selectedMovie.Name)" type="video/{{selectedMovie.Format}}" />-->
-      <!-- <source src="../../assets/VID-20161129-WA0007.mp4" type="video/mp4" />-->
-    </video>
+    <video id="videoPlayer" [src]="selectedMovie.MoviePath" width="560" height="240" controls></video>
     <!-- <img  [src]="(selectedMovie.Path+ '\\'+selectedMovie.Name)"  alt="Italian Trulli">-->
 
   </div>
@@ -18,16 +15,15 @@
       <tr>
         <th>#</th>
         <th>Movie Name</th>
-        <th>Language</th>
+        <th>MovieDirectory</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let movie of moviesList">
-        <td>{{movie.id}}</td>
+      <tr *ngFor="let movie of moviesList; let i=index;">
+        <td>{{i+1}}</td>
         <td>{{movie.name}}</td>
-        <td>{{movie.language}}</td>
-        <!--<!--<td>{{movie.path}}</td>-->
+        <td>{{movie.movieDirectory}}</td> 
         <td><button type="button" class="btn" (click)="getMovie(movie)">Play</button></td>
       </tr>
     </tbody>

@@ -35,15 +35,15 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovie(movie: string) {
-    debugger;
+   // debugger;
     this.movieservice.getMovie(movie["name"]).subscribe(resp => {
-      debugger;
+    //  debugger;
       this.selectedMovie.Id = resp["id"];
       this.selectedMovie.Name = resp["name"];
-      this.selectedMovie.MoviePath = resp["moviePath"]  + resp["name"];//+ "" + resp["language"] + 
+      this.selectedMovie.MoviePath = resp["moviePath"] + resp["movieDirectory"]+"\\" + resp["name"];
       this.selectedMovie.Format = resp["format"];
-      this.selectedMovie.Language = resp["Language"];
-      console.log("as  " + this.selectedMovie.MoviePath);
+      this.selectedMovie.MovieDirectory = resp["movieDirectory"];
+    //  console.log("as  " + this.selectedMovie.MoviePath);
     });
   }
 
