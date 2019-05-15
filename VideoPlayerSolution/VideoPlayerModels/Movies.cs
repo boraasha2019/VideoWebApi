@@ -22,7 +22,6 @@ namespace VideoPlayer.Models
         /// </summary>
         public string Name { get; set; }
 
-
         /// <summary>
         /// to identify the path of the movie
         /// </summary>
@@ -35,8 +34,8 @@ namespace VideoPlayer.Models
         public string Format { get; set; }
 
         /// <summary>
-        /// Language of the movie
+        /// MovieDirectory of the movie
         /// </summary>
-        public string Language { get; set; }
+        public string MovieDirectory { get; set; }
     }
 }
