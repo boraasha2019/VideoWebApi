@@ -38,27 +38,40 @@ namespace VideoPlayer.Repository
 
         private List<Movies> GetAllMovies()
         {
-           // var folderPath = @"G:\Movies\English";
-              var folderPath = @"F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\wwwroot\";
+            var folderPath = @"G:\Movies";
+            //  var folderPath = @"F:\Study\VideoPlayer\VideoPlayerSolution\VideoPlayerSolution\wwwroot\";
             var id = 0;
-            var sb = string.Empty;
+            var movieDirectory = string.Empty;
             var indx = 0;
             List<Movies> movList = new List<Movies>();
             if (Directory.Exists(folderPath))
             {
-                //foreach (var direct in Directory.GetDirectories(folderPath, "*.*", SearchOption.AllDirectories))
-                //{
-                //foreach (var movies in Directory.GetFiles(direct, "*.*", SearchOption.AllDirectories))
-                //{
+
                 foreach (var direct in Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories))
                 {
                     if (Utility.IsValidMovieExtension(Path.GetExtension(direct)))
                     {
                         indx = direct.LastIndexOf("\\");
-                        sb = direct.Substring(indx, (direct.Length - indx)).Remove(0, 1);
-                        movList.Add(new Movies { Id = ++id, Name = Path.GetFileName(direct), Format = Path.GetExtension(direct).Substring(1), Language = sb });
+                        //   sb = direct.Substring(indx, (direct.Length - indx)).Remove(0, 1);
+                        movieDirectory = Path.GetDirectoryName(direct).Substring(direct.IndexOf("\\", 3)).Remove(0, 1);
+                        movList.Add(new Movies { Id = ++id, Name = Path.GetFileName(direct), Format = Path.GetExtension(direct).Substring(1), MovieDirectory = movieDirectory });
                     }
                 }
+                ////--old imagebrowsing
+
+                //foreach (var direct in Directory.GetDirectories(folderPath, "*.*", SearchOption.AllDirectories))
+                //{
+                //    foreach (var movies in Directory.GetFiles(direct, "*.*", SearchOption.AllDirectories))
+                //    {
+                //        //foreach (var direct in Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories))
+                //        //{
+                //            if (Utility.IsValidMovieExtension(Path.GetExtension(movies)))
+                //            {
+                //                indx = movies.LastIndexOf("\\");
+                //                sb = movies.Substring(indx, (movies.Length - indx)).Remove(0, 1);
+                //                movList.Add(new Movies { Id = ++id, Name = Path.GetFileName(direct), Format = Path.GetExtension(movies).Substring(1), Language = sb });
+                //            }
+                //        //}
                 //    }
                 //}
             }
