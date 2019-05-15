@@ -20,21 +20,29 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Controllers\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Controllers\**" />
+    <EmbeddedResource Remove="Controllers\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Controllers\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\movies\movies.component.ts" />
+    <None Remove="ClientApp\src\app\series\series.component.ts" />
     <None Remove="ClientApp\src\app\services\movie.ts" />
     <None Remove="ClientApp\src\app\services\movies.service.ts" />
+    <None Remove="ClientApp\src\app\shared\global.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\movies\movies.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\series\series.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\movies.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\movie.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\global.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
