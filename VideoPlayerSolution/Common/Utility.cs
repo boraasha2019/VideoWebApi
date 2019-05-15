@@ -5,7 +5,7 @@ namespace VideoPlayer.Common
 {
     public static class Utility
     {
-        private static readonly string[] validMovieExtension = { ".webm", ".avi", ".flv", ".m4v", " .mkv", ".mp4", ".m4p" };
+        private static readonly string[] validMovieExtension = { ".webm", ".flv", ".m4v", " .mkv", ".mp4", ".m4p", ".ogg" };
 
         /// <summary>
         /// to verify if the moview file extension is valid.
