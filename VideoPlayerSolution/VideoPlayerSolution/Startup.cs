@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using VideoPlayer.Handlers.Interface;
 using VideoPlayer.Handlers.Request;
 using VideoPlayer.Handlers.Messages;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace VideoPlayerSolution
 {
@@ -22,6 +24,7 @@ namespace VideoPlayerSolution
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDirectoryBrowser(); // added for imagebrowsing
             //.AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
             services.AddScoped<IRequestHandler<MoviesRequest, MoviesResponse>, MoviesRequestHandler>();
             services.AddScoped<IRequestHandler<MovieRequest, MovieResponse>, MovieRequestHandler>();
@@ -56,6 +59,13 @@ namespace VideoPlayerSolution
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+           Path.Combine(Directory.GetCurrentDirectory(), "G:\\Movies")),
+                RequestPath = "/StaticFiles"
+            });
+            app.UseDirectoryBrowser();//imagebrowsing
             app.UseMvc();
         }
     }
